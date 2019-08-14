@@ -14,6 +14,7 @@ iseg_registerRecordDeviceDriver pdbbase
 ## Load record instances
 dbLoadTemplate "db/user.substitutions"
 dbLoadRecords "db/dbSubExample.db", "user=fulcher"
+dbLoadRecords "db/iseg.db", "user=fulcher,P=ACS_DIAG:IOC_iseg:"
 
 ## Set this to see messages from mySub
 #var mySubDebug 1

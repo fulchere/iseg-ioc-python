@@ -1,0 +1,3 @@
+epicsEnvSet("IOC","iocdiagPyDevSup")
+epicsEnvSet("TOP","/home/fulcher/Desktop/iseg-ioc-python")
+epicsEnvSet("EPICS_BASE","/usr/lib/epics")

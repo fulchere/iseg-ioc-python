@@ -67,6 +67,7 @@ class isegSupport(PT.TableBase):
                     }''' % (session_id,)
         ws.send(generic_request)
         while True:
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx")
             received = ws.recv()
             jsoned = json.loads(received)
             if 'c' in jsoned[0]:

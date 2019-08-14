@@ -8,12 +8,12 @@
 cd "${TOP}"
 
 ## Register all support components
-dbLoadDatabase "dbd/diagPyDevSup.dbd"
+dbLoadDatabase "dbd/iseg.dbd"
 diagPyDevSup_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
 dbLoadTemplate "db/user.substitutions"
-dbLoadRecords "db/dbSubExample.db", "user=fulcher"
+dbLoadRecords "db/iseg.db", "user=fulcher"
 
 ## Set this to see messages from mySub
 #var mySubDebug 1
