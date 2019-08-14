@@ -1,6 +1,4 @@
 TOP = ..
 include $(TOP)/configure/CONFIG
-DIRS += $(wildcard *ioc*)
-DIRS += $(wildcard as*)
+DIRS += $(shell find . -mindepth 2 -type f -name 'Makefile' | xargs dirname)
 include $(CONFIG)/RULES_DIRS
-
