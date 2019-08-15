@@ -30,11 +30,10 @@ record(ai, "$(P)SUM_RD") {
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)TIME_RD") {
+record(stringin, "$(P)TIME_RD") {
     field(DTYP, "Python Device")
     field(INP,  "@devsup.ptable iseg get time")
     field(PINI, "YES")
-    field(PREC, "1")
     field(VAL,  "0")
     field(SCAN, "I/O Intr")
 }
