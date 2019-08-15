@@ -38,7 +38,7 @@ record(stringin, "$(P)TIME_RD") {
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P)TEMP_RD") {
+record(stringin, "$(P)TEMP_RD") {
     field(DTYP, "Python Device")
     field(INP,  "@devsup.ptable iseg get temp")
     field(PINI, "YES")

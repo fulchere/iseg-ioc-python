@@ -23,6 +23,21 @@ class isegSupport(PT.TableBase):
     def __init__(self, name):
         super().__init__(name='iseg')    
 
+    def calls(self,ws):
+        for i in range(10):
+            received = ws.recv()
+            jsoned = json.loads(received)
+            for js in jsoned:            
+                if 'c' in js:
+                    for item in js['c']:
+                        typ = item['d']['i']
+                        if typ == "System.time":
+                            self.time.value = item['d']['v']
+                            self.time.notify()
+                        if typ == "Status.temperature0" or typ == "Status.temperature1":
+                            self.temp.value = item['d']['v']
+                            self.temp.notify()
+
     @trigger.onproc
     def do_trigger(self):
         ws = create_connection("ws://192.168.1.101:8080",timeout=40)
@@ -60,13 +75,13 @@ class isegSupport(PT.TableBase):
 	                "r": "websocket"
                     }''' % session_id
         ws.send(getVoltage)
-        received = ws.recv()
-        jsoned = json.loads(received)
+        self.calls(ws)
 
-        self.time.value = jsoned[0]['c'][1]['d']['v']
-        self.time.notify()
-        self.temp.value = 72.981
-        self.temp.notify()
+
+        #self.time.value = received
+        #self.time.notify()
+        #self.temp.value = 72.981
+        #self.temp.notify()
 
 def build():
     return isegSupport('iseg')
