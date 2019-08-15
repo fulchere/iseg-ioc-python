@@ -38,7 +38,7 @@ record(stringin, "$(P)TIME_RD") {
     field(SCAN, "I/O Intr")
 }
 
-record(stringin, "$(P)TEMP_RD") {
+record(ai, "$(P)TEMP_RD") {
     field(DTYP, "Python Device")
     field(INP,  "@devsup.ptable iseg get temp")
     field(PINI, "YES")
@@ -47,3 +47,74 @@ record(stringin, "$(P)TEMP_RD") {
     field(SCAN, "I/O Intr")
 }
 
+record(ai, "$(P)VOLT0_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt0")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)VOLT1_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt1")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)VOLT2_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt2")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)VOLT3_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt3")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)VOLT4_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt4")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)VOLT5_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt5")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)VOLT6_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt6")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)VOLT7_RD") {
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable iseg get volt7")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(VAL,  "0")
+    field(SCAN, "I/O Intr")
+}
