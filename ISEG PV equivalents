@@ -44,7 +44,7 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:StatusLow => No equivalent
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:StatusHigh => No equivalent
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:EventStatusLow => No equivalent
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:EventStatusHigh => No equivalent
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:EventMask => Control.moduleEventMask or Control.moduleChannelEventMask or Control.channelEventMask ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:EventMask => Control.channelEventMask ???
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:FanSpeed => No equivalent
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:Control:0 => No equivalent
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:SerialNumber => Status.serialNumber
@@ -60,7 +60,7 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:Article => No equivalent
 
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Status => See STATUS at top of file
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventStatus => Status.eventCounter ???
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventMask => Control.moduleEventMask or Control.moduleChannelEventMask or Control.channelEventMask ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventMask => Control.moduleEventMask ???
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Control:doClear => Control.clearEvents
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Control:setFineAdjustment => Control.adjustment
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Control:setKillEnable => Control.kill
@@ -124,12 +124,12 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:TemperatureExternal
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VctCoefficient => Control.vctCoefficient
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Status => See STATUS at top of file
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Control:setOn => Control.on ???
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Control:setEmergency
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventStatus
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventMask
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:DelayedTripAction
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:DelayedTripTime
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ExternalInhibitAction
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Control:setEmergency => Control.emergency
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventStatus => Status.eventCounter??
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventMask => Control.moduleChannelEventMask ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:DelayedTripAction => Setup.delayedTripAction
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:DelayedTripTime => Setup.delayedTripTime
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ExternalInhibitAction => Setup.externalInhibitAction
 
 
 ######################################
@@ -138,15 +138,15 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ExternalInhibitActi
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:InputError
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isOn => Status.on
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageRamp => Status.ramping
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isEmergency
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isEmergency => Status.emergency
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCC
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCV
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCurrentBound
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageBound
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCurrentBound => Status.voltageBoundExceeded
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageBound => Status.currentBoundExceeded
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isEventInhibit
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isTrip
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCurrentLimit
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageLimit
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isTrip => Status.currentTrip
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCurrentLimit => Status.currentLimit or 
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageLimit => Status.voltageLimit
 
 
 ############################################
@@ -156,13 +156,13 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageLimit
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventInputError
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EOn2Off
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventEndOfRamp => Event.endOfRamp
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventEmergency
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventEmergency => Event.emergency
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ECC
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ECV
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ECurrentBounds
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EVVoltageBounds
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventExternalInhibit
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventTrip
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventCurrentLimit
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventVoltageLimit
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ECurrentBounds => Event.currentBoundExceeded
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EVVoltageBounds => Event.voltageBoundExceeded
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventExternalInhibit => Event.externalInhibitActive
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventTrip => Event.currentTrip
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventCurrentLimit => Event.currentLimitExceeded
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventVoltageLimit => Event.voltageLimitExceeded
 
