@@ -1,8 +1,22 @@
+STATUS: There are various viable commands, listed below.
+Status.mainsGood    Desc~mains voltage is in valid range
+Status.runningState Desc~crate status:
+					<br/>error - at least one error in crate or its modules or channels
+					<br/>info - at least one channel ramping
+					<br/>ok - at least one channel at HV-ON
+					<br/>off - all channels at HV-OFF
+					<br/>disabled - crate not available
+Status.power        Desc~the create is switched on (no standby)
+Status.on           Desc~at least one channel is active or has measured voltage above 63 volts
+Status.isAlive      Desc~the create is alive (in standby or powered on)
+
+			
+
 ###############################
 # ### CAN_System item values ##
 ###############################
 
-ISEG:${CONTROLLER_SN}:Status => Status.power or Status.on or Status.isAlive or Status.runningState ???
+ISEG:${CONTROLLER_SN}:Status => See STATUS at top of file
 ISEG:${CONTROLLER_SN}:BitRate => Setup.cycleTime ???
 ISEG:${CONTROLLER_SN}:ModuleNumber => No equivalent
 ISEG:${CONTROLLER_SN}:CrateNumber => No equivalent
@@ -14,7 +28,7 @@ ISEG:${CONTROLLER_SN}:CycleCounter => Setup.cycleTime ???
 # ### CAN_Line item values ##
 #############################
 
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:Status => Status.power or Status.on or Status.isAlive or Status.runningState ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:Status => See STATUS at top of file
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:BitRate => Setup.cycleTime ???
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:ModuleNumber => No equivalent
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:CrateNumber => No equivalent
@@ -44,72 +58,72 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${DEVICE_ID}:Article => No equivalent
 # ### Module item values ### #
 ##############################
 
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Status => Status.power or Status.on or Status.isAlive or Status.runningState ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Status => See STATUS at top of file
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventStatus => Status.eventCounter ???
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventMask => Control.moduleEventMask or Control.moduleChannelEventMask or Control.channelEventMask ???
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Control:doClear => Control.clearEvents
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Control:setFineAdjustment => Status.adjustment
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Control:setFineAdjustment => Control.adjustment
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Control:setKillEnable => Control.kill
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:VoltageRampSpeed => Control.voltageRampspeed
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:CurrentRampSpeed => Control.currentRampspeed
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:VoltageLimit
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:CurrentLimit
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Temperature
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:SerialNumber
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:ChannelNumber
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:SampleRate
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:DigitalFilter
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:FirmwareRelease
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:FirmwareName
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Article
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:VoltageLimit => Status.voltageLimit
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:CurrentLimit => Status.currentLimit
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Temperature => Status.temperature0 or Status.temperature1 or Status.temperature
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:SerialNumber => Status.serialNumber
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:ChannelNumber => No equivalent
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:SampleRate => Setup.adcSampleRate
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:DigitalFilter => Setup.digitalFilter
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:FirmwareRelease => Status.firmwareRelease
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:FirmwareName => Status.firmwareName
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Article => No equivalent
 
 
 #####################################
 # ### Decoding of Module Status ### #
 #####################################
 
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isAdjustment
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Status:isLiveInsertion
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:needService
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isInputError
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isNoSumError
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isNoRamp
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isSafetyLoopGood
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isEVentActive
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isModuleGood
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isSuppliesGodd
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isTemperatureGood
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isKillEnable
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isAdjustment => Status.adjustment
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:Status:isLiveInsertion => Control.liveInsertion
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:needService => Status.needService
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isInputError => No equivalent
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isNoSumError => No equivalent
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isNoRamp => No equivalent
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isSafetyLoopGood => Status.safetyLoopClosed
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isEVentActive => Status.eventCounter
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isModuleGood => Status.isAlive ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isSuppliesGodd => Status.supplyGood
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isTemperatureGood => Status.temperatureGood
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isKillEnable => Control.kill
 
 
 ###########################################
 # ### Decoding of Module Event Status ### #
 ###########################################
 
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventLiveInsertion
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventService
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventInputError
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventSafetyLoopNotGood
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventSuppliesNotGood
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventTemperatureNotGood
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventLiveInsertion => Control.liveInsertion
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventService => Status.needService
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventInputError => No equivalent
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventSafetyLoopNotGood => Status.safetyLoopClosed ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventSuppliesNotGood => Event.supplyNotGood
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventTemperatureNotGood => Event.temperatureNotGood
 
 
 ###############################
 # ### Channel item values ### #
 ###############################
 
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageSet
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentSet
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageMeasure
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentMeasure
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageBounds
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentBounds
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageNominal
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentNominal
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:TemperatureExternal
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VctCoefficient
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Status
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Control:setOn
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageSet => Control.voltageSet
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentSet => Control.currentSet
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageMeasure => Status.voltageMeasure
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentMeasure => Status.currentMeasure
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageBounds => Status.voltageLimit
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentBounds => Status.currentLimit
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VoltageNominal => Status.voltageNominal
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:CurrentNominal => Status.currentNominal
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:TemperatureExternal = Status.temperatureExternal
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:VctCoefficient => Control.vctCoefficient
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Status => See STATUS at top of file
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Control:setOn => Control.on ???
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:Control:setEmergency
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventStatus
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventMask
@@ -122,8 +136,8 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ExternalInhibitActi
 # ### Decoding of Channel Status ### #
 ######################################
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:InputError
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isOn
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageRamp
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isOn => Status.on
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageRamp => Status.ramping
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isEmergency
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCC
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCV
@@ -141,7 +155,7 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageLimit
 
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventInputError
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EOn2Off
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventEndOfRamp
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventEndOfRamp => Event.endOfRamp
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:EventEmergency
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ECC
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ECV
