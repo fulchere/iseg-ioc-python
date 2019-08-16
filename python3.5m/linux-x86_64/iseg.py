@@ -46,6 +46,9 @@ class isegSupport(PT.TableBase):
         self.ws.send(login_request)
         login_message = self.ws.recv()
         self.session_id = json.loads(login_message)['i']
+    
+    def __exit__():
+        self.ws.close()
 
     def thread_call(self):
         for i in range(1):
