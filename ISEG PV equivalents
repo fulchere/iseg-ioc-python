@@ -103,7 +103,7 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:isKillEnable => Control.kill
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventLiveInsertion => Control.liveInsertion
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventService => Status.needService
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventInputError => No equivalent
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventSafetyLoopNotGood => Status.safetyLoopClosed ???
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventSafetyLoopNotGood => Error.safetyLoopWasOpened ???
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventSuppliesNotGood => Event.supplyNotGood
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:EventTemperatureNotGood => Event.temperatureNotGood
 
@@ -136,7 +136,7 @@ ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:ExternalInhibitActi
 # ### Decoding of Channel Status ### #
 ######################################
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:InputError
-ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isOn => Status.on
+ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isOn => Control.power
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isVoltageRamp => Status.ramping
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isEmergency => Status.emergency
 ISEG:${CONTROLLER_SN}:${CAN_LINE}:${MODULE_ID}:${CHANNEL_ID}:isCC

@@ -29,6 +29,7 @@ class isegSupport(PT.TableBase):
     volt5 = PT.Parameter(iointr=True)
     volt6 = PT.Parameter(iointr=True)
     volt7 = PT.Parameter(iointr=True)
+    
 
     def __init__(self, name):
         super().__init__(name='iseg')
@@ -54,6 +55,7 @@ class isegSupport(PT.TableBase):
         for i in range(1):
             received = self.ws.recv()
             jsoned = json.loads(received)
+            print(json.dumps(jsoned, indent=4, sort_keys=True))
             for js in jsoned:            
                 if 'c' in js:
                     for item in js['c']:
@@ -106,6 +108,71 @@ class isegSupport(PT.TableBase):
 					                    "c": "*"
 				                    },
 				                    "i": "Control.voltageSet",
+				                    "v": "",
+				                    "u": ""
+			                    }
+		                    },
+		                    {
+			                    "c": "getItem",
+			                    "p": {
+				                    "p": {
+					                    "l": "0",
+					                    "a": "*",
+					                    "c": "*"
+				                    },
+				                    "i": "Control.currentSet",
+				                    "v": "",
+				                    "u": ""
+			                    }
+		                    },
+		                    {
+			                    "c": "getItem",
+			                    "p": {
+				                    "p": {
+					                    "l": "0",
+					                    "a": "*",
+					                    "c": "*"
+				                    },
+				                    "i": "Control.power",
+				                    "v": "",
+				                    "u": ""
+			                    }
+		                    },
+		                    {
+			                    "c": "getItem",
+			                    "p": {
+				                    "p": {
+					                    "l": "0",
+					                    "a": "*",
+					                    "c": "*"
+				                    },
+				                    "i": "Error.safetyLoopWasOpened",
+				                    "v": "",
+				                    "u": ""
+			                    }
+		                    },
+		                    {
+			                    "c": "getItem",
+			                    "p": {
+				                    "p": {
+					                    "l": "0",
+					                    "a": "*",
+					                    "c": "*"
+				                    },
+				                    "i": "Control.safetyLoopClosed",
+				                    "v": "",
+				                    "u": ""
+			                    }
+		                    },
+		                    {
+			                    "c": "getItem",
+			                    "p": {
+				                    "p": {
+					                    "l": "0",
+					                    "a": "*",
+					                    "c": "*"
+				                    },
+				                    "i": "Control.power",
 				                    "v": "",
 				                    "u": ""
 			                    }
